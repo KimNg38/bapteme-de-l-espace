@@ -1,1 +1,39 @@
+Très bon travail. Continue ainsi !!
+
+Quelques axes d'améliorations:
+
+- dans l'exo 2 === est plus fiable que == dans le test de comparaison de valeur car il ne convertit pas les élements avant de les comparer
+
+    ex: 
+    var num = 4;
+    var str = "4";
+
+    (num === str); // false
+    (num == str);  // true
+
+- Dans l'exo 3, même si le code ne retourne pas d'erreur, c'est bien de tester si l'élement du tableau est bien une chaine de caractère pour en vérifier la longueur. Sinon le test te retourne "undefined".
+
+    // On vérifie que c'est pas une chaine de caractère
+    if (typeof str !== 'string') {
+      // Si je veux passer à l'itération suivante
+      continue;
+    }
+
+- Pour l'exo 5, je te propose de regarder une solution plus compacte si cela t'intéresse :
+
+function sum(arr) {
+
+  var result = 0;   // Variable qui va venir accumuler les sommes
+  for (var index in arr) {   // Pour chaque élément du tableau
+    var item = arr[index];
+    
+    if (typeof item === 'number') { // Si c'est un nombre, on additionne
+      result += item;
+    }
+    else if (typeof item === 'object') {  // Si c'est un array, on additionne en utilisant sum()
+      result += sum(item);
+    }
+  }
+  return result; // on retourne le résultat
+}
 

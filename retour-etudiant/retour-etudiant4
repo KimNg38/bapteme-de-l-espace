@@ -1,1 +1,108 @@
+Le challenge n'est pas complet. As-tu eu des difficultés à suivre le cours ou il t'a manqué du temps pour finir les exercices? N'hésites pas à me contacter pour qu'on puisse en discuter ensemble, il y a des solutions pour tout :) 
 
+Néanmoins voici quelques axes d'améliorations et corrections :
+
+- dans l'exo 2 === est plus fiable que == dans le test de comparaison de valeur car il ne convertit pas les élements avant de les comparer
+
+    ex: 
+    var num = 4;
+    var str = "4";
+
+    (num === str); // false
+    (num == str);  // true
+
+- exo 3
+
+La fonction "lastIndexOf" que tu utilises retourne normalement l'indice de la dernière occurence de la chaine passée en paramètre et elle ne fonctionne pas avec plusieurs paramètres.
+
+Le but ici est de retourner l'extension d'un fichier peu importe le fichier. Il faut donc que cela fonctionne peut importe la chaine passée en paramètre.
+
+Voici le corrigé des exercices 3-4 et 5.  N'hésites pas à revenir si tu veux plus d'explications :
+
+        /*
+         * Exo3
+         *
+         * str est une string
+         * Retourner l'extension de fichier.
+         * Par exemple index.html => html
+         */
+        function getExtension(str) {
+          // Je vais couper ma string à chaque point
+          var parts = str.split('.');
+
+          // Si j'ai qu'un seul élément, je retourne false
+          if (parts.length === 1) {
+            return false;
+          }
+
+          // Je prends le dernier
+          // dernier = length - 1 (-1, parce qu'on indexe à partir de 0)
+          var lastPart = parts[parts.length - 1];
+
+          // Je retourne la dernière partire qui est l'extension
+          return lastPart;
+        }
+
+        /*
+         * Exo4
+         *
+         * arr est un array
+         * Retourner la chaine la plus longue de l'array
+         */
+        function getLongestString(arr) {
+          // Je définis la string la plus grande
+          var strMax = '';
+
+          // Sur chaque élément
+          for (var index in arr) {
+            var str = arr[index];
+
+            // On vérifie que c'est pas une chaine de caractère
+            if (typeof str !== 'string') {
+              // Si je veux passer à l'itération suivante
+              continue;
+            }
+
+            // Puis on regarde si c'est la plus grande
+            if (str.length > strMax.length) {
+              strMax = str;
+            }
+          }
+
+          // Si l'array est vide, on renvoie false
+          if (arr.length === 0) {
+            return false;
+          }
+
+          // On retourne la plus grande
+          return strMax;
+        }
+
+        /*
+         * Exo5
+         *
+         * arr est un array
+         * Retourner la somme des nombres contenus dans cet array
+         */
+        function sum(arr) {
+          // Variable qui va venir accumuler les sommes
+          var result = 0;
+
+          // Pour chaque élément du tableau
+          for (var index in arr) {
+            var item = arr[index];
+
+            // Si c'est un nombre, on additionne
+            if (typeof item === 'number') {
+              result += item;
+            }
+
+            // Si c'est un array, on additionne en utilisant sum()
+            else if (typeof item === 'object') {
+              result += sum(item);
+            }
+          }
+
+          // On retourne la somme
+          return result;
+        }

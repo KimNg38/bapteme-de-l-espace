@@ -1,1 +1,11 @@
+Très bon travail. On voit que tu maitrises bien le javascript. Continue ainsi !
 
+Une petite remarque cependant :
+
+- L'exo 4 s'execute correctement mais il y a un petit défaut dans ton code. 
+
+Ce test : getLongestString(['un', 27987986896, 'trois', 4, 'cinq']) renvoi 27987986896
+
+Or l'énoncé de l'exercice est : Retourner la chaine la plus longue de l'array
+
+Quand l'élément de ton tableau n'est pas une chaine, il ne faut pas le convertir en string mais l'ignorer.
